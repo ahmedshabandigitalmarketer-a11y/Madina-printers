@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>[YAHAN PRESS KA NAAM LIKHNA] — Printing Press Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #0F2A44;
+      --primary-light: #1a4168;
+      --accent: #FF6B00;
+      --accent-hover: #e55e00;
+      --accent-soft: #fff3ea;
+      --bg: #f4f7fa;
+      --surface: #ffffff;
+      --text: #16222e;
+      --text-muted: #5c6f82;
+      --border: #e2e8f0;
+      --danger: #d92d20;
+      --danger-soft: #fef3f2;
+      --success: #16a34a;
+      --success-soft: #dcfce7;
+      --dark-green: #14532d;
+      --dark-green-soft: #bbf7d0;
+      --info: #2563eb;
+      --info-soft: #dbeafe;
+      --grey: #64748b;
+      --grey-soft: #f1f5f9;
+      --radius: 14px;
+      --radius-sm: 10px;
+      --shadow: 0 4px 16px rgba(15, 42, 68, 0.06);
+      --nav-height: 70px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      padding-bottom: calc(var(--nav-height) + 24px);
+      overflow-x: hidden;
+    }
+
+    /* Top Sticky Header */
+    .app-header {
+      background: linear-gradient(135deg, var(--primary) 0%, #173b5e 100%);
+      color: #ffffff;
+      padding: 14px 16px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 4px 14px rgba(15, 42, 68, 0.16);
+    }
+
+    .header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+      line-height: 1.25;
+    }
+
+    .brand-sub {
+      font-size: 0.72rem;
+      color: #cbd5e1;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .city-badge {
+      background: rgba(255, 107, 0, 0.2);
+      color: #ff9d57;
+      border: 1px solid rgba(255, 107, 0, 0.45);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .btn-naya-top {
+      background-color: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 44px;
+      box-shadow: 0 3px 10px rgba(255, 107, 0, 0.35);
+      transition: transform 0.12s ease, background-color 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-naya-top:active {
+      transform: scale(0.97);
+      background-color: var(--accent-hover);
+    }
+
+    /* Global Instant Search Bar */
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 13px;
+      font-size: 0.95rem;
+      pointer-events: none;
+      opacity: 0.75;
+    }
+
+    .search-input {
+      width: 100%;
+      min-height: 44px;
+      padding: 10px 38px 10px 38px;
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.88rem;
+      outline: none;
+    }
+
+    .search-input:focus {
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.35);
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 8px;
+      background: #e2e8f0;
+      color: var(--primary);
+      border: none;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .clear-search-btn.visible {
+      display: inline-flex;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .section-block {
+      margin-bottom: 22px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      gap: 8px;
+    }
+
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .section-title::before {
+      content: "";
+      width: 4px;
+      height: 18px;
+      background: var(--accent);
+      border-radius: 4px;
+      display: inline-block;
+    }
+
+    /* Tab Views */
+    .view-section {
+      display: none;
+    }
+
+    .view-section.active {
+      display: block;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* 1. 4 KPI Cards in ONE Row */
+    .kpi-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+
+    .kpi-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      padding: 10px 8px;
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--primary);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 92px;
+    }
+
+    .kpi-card:nth-child(2) {
+      border-top-color: var(--accent);
+    }
+
+    .kpi-card:nth-child(3) {
+      border-top-color: var(--danger);
+    }
+
+    .kpi-card:nth-child(4) {
+      border-top-color: var(--success);
+    }
+
+    .kpi-label {
+      font-size: 0.66rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      line-height: 1.25;
+    }
+
+    .kpi-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-top: 6px;
+      word-break: break-word;
+    }
+
+    .kpi-card:nth-child(3) .kpi-value {
+      color: var(--danger);
+      font-size: 0.8rem;
+    }
+
+    .kpi-card:nth-child(4) .kpi-value {
+      color: var(--success);
+    }
+
+    /* Big CTA Banner on Home */
+    .big-cta-btn {
+      width: 100%;
+      min-height: 52px;
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 6px 16px rgba(255, 107, 0, 0.28);
+      margin-bottom: 18px;
+      transition: background-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .big-cta-btn:active {
+      background: var(--accent-hover);
+      transform: scale(0.99);
+    }
+
+    /* Cards & Forms */
+    .card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .form-grid-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .form-control,
+    .form-select {
+      width: 100%;
+      min-height: 46px;
+      padding: 10px 12px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--text);
+      background: #ffffff;
+      outline: none;
+    }
+
+    .form-control:focus,
+    .form-select:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.15);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      min-height: 46px;
+      padding: 11px 16px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-primary:active {
+      background: var(--primary-light);
+    }
+
+    .btn-orange {
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius-sm);
+      min-height: 46px;
+      padding: 11px 16px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn-orange:active {
+      background: var(--accent-hover);
+    }
+
+    /* Filter Pills for Orders */
+    .filter-scroll {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      scrollbar-width: none;
+    }
+
+    .filter-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pill {
+      background: var(--surface);
+      color: var(--primary);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 14px;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      min-height: 38px;
+    }
+
+    .filter-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Order Card */
+    .orders-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    @media (min-width: 768px) {
+      .orders-list {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .order-card {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .order-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .customer-name {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .customer-phone {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Status Badges */
+    .status-badge {
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+    }
+
+    .status-Pending {
+      background: var(--grey-soft);
+      color: var(--grey);
+      border: 1px solid #cbd5e1;
+    }
+
+    .status-Designing {
+      background: var(--info-soft);
+      color: var(--info);
+      border: 1px solid #93c5fd;
+    }
+
+    .status-Printing {
+      background: var(--accent-soft);
+      color: var(--accent);
+      border: 1px solid #fdba74;
+    }
+
+    .status-Ready {
+      background: var(--success-soft);
+      color: var(--success);
+      border: 1px solid #86efac;
+    }
+
+    .status-Delivered {
+      background: var(--dark-green-soft);
+      color: var(--dark-green);
+      border: 1px solid #4ade80;
+    }
+
+    .order-specs {
+      background: #f8fafc;
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      font-size: 0.82rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .spec-item strong {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* 5-Stage Status Buttons */
+    .stage-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .stage-buttons {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 5px;
+    }
+
+    .stage-btn {
+      min-height: 40px;
+      border-radius: 8px;
+      border: 1.5px solid var(--border);
+      background: #ffffff;
+      font-family: inherit;
+      font-size: 0.68rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 4px 2px;
+      text-align: center;
+      line-height: 1.15;
+      transition: all 0.12s ease;
+    }
+
+    .stage-btn[data-stage="Pending"].active {
+      background: var(--grey);
+      color: #fff;
+      border-color: var(--grey);
+    }
+
+    .stage-btn[data-stage="Designing"].active {
+      background: var(--info);
+      color: #fff;
+      border-color: var(--info);
+    }
+
+    .stage-btn[data-stage="Printing"].active {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+
+    .stage-btn[data-stage="Ready"].active {
+      background: var(--success);
+      color: #fff;
+      border-color: var(--success);
+    }
+
+    .stage-btn[data-stage="Delivered"].active {
+      background: var(--dark-green);
+      color: #fff;
+      border-color: var(--dark-green);
+    }
+
+    /* Payment / Udhaar Box */
+    .hisab-box {
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.82rem;
+    }
+
+    .hisab-figures {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .baaki-red {
+      color: var(--danger);
+      font-weight: 700;
+      background: var(--danger-soft);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .paid-pill {
+      color: var(--dark-green);
+      font-weight: 700;
+      background: var(--dark-green-soft);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .btn-payment-mili {
+      min-height: 40px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: none;
+      background: var(--success);
+      color: #ffffff;
+      font-family: inherit;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-payment-mili:active {
+      opacity: 0.9;
+    }
+
+    /* WhatsApp Button */
+    .btn-whatsapp {
+      width: 100%;
+      min-height: 44px;
+      background: #16a34a;
+      color: #ffffff;
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-whatsapp:active {
+      background: #15803d;
+    }
+
+    /* Price Calculator Result Box */
+    .calc-result {
+      margin-top: 12px;
+      background: var(--accent-soft);
+      border: 1.5px solid #ffbe8f;
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .calc-price-tag {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    /* Customer List */
+    .customer-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+      box-shadow: 0 2px 8px rgba(15, 42, 68, 0.04);
+    }
+
+    .customer-main {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .customer-sub {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Staff List */
+    .staff-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .staff-badge {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      border: none;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .staff-progress {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .staff-done {
+      background: var(--success-soft);
+      color: var(--success);
+    }
+
+    /* 8. Design Gallery - 6 Images Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    @media (min-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+    }
+
+    .gallery-card {
+      background: var(--surface);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 135px;
+      object-fit: cover;
+      display: block;
+      background: #e2e8f0;
+    }
+
+    .gallery-caption {
+      padding: 8px 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    /* Footer */
+    .app-footer {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 20px 16px;
+      margin-top: 24px;
+      border-radius: var(--radius) var(--radius) 0 0;
+      text-align: center;
+    }
+
+    .secure-banner {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #ffdf9e;
+      margin-bottom: 12px;
+    }
+
+    .footer-details {
+      font-size: 0.8rem;
+      color: #e2e8f0;
+      line-height: 1.65;
+    }
+
+    /* Fixed Bottom Navigation */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      z-index: 50;
+      box-shadow: 0 -4px 16px rgba(15, 42, 68, 0.08);
+    }
+
+    .nav-btn {
+      background: none;
+      border: none;
+      font-family: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      min-height: 48px;
+      position: relative;
+    }
+
+    .nav-btn .nav-icon {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .nav-btn.active {
+      color: var(--accent);
+    }
+
+    .nav-btn.active::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 36px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 0 0 4px 4px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: calc(var(--nav-height) + 14px);
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--primary);
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 60;
+      box-shadow: 0 6px 18px rgba(15, 42, 68, 0.25);
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 24px 14px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px dashed #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP HEADER + INSTANT SEARCH -->
+  <header class="app-header">
+    <div class="header-top">
+      <div>
+        <div class="brand-title">[YAHAN PRESS KA NAAM LIKHNA]</div>
+        <div class="brand-sub">
+          <span class="city-badge">Karachi, Pakistan</span>
+          <span>WA: [YAHAN NUMBER LIKHNA e.g. 923001234567]</span>
+        </div>
+      </div>
+      <button type="button" class="btn-naya-top" id="headerNayaOrderBtn" aria-label="Naya Order">
+        <span>+ Naya Order</span>
+      </button>
+    </div>
+
+    <div class="search-wrapper">
+      <span class="search-icon">🔍</span>
+      <input
+        type="text"
+        id="globalSearchInput"
+        class="search-input"
+        placeholder="Naam likhein — orders aur customers foran filter honge..."
+        autocomplete="off"
+      />
+      <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Clear search">✕</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 1. DASHBOARD TOP: 4 SMALL CARDS IN ONE ROW -->
+    <section class="section-block" aria-label="Dashboard Summary">
+      <div class="kpi-row">
+        <div class="kpi-card">
+          <div class="kpi-label">Aaj ke Naye Orders</div>
+          <div class="kpi-value" id="kpiNayeOrders">5</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Kaam Chal Raha Hai</div>
+          <div class="kpi-value" id="kpiKaamChalRaha">3</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Aaj Payment Aani Hai</div>
+          <div class="kpi-value" id="kpiPaymentAaniHai">Rs. 25,000</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-label">Kaam Ready Hai</div>
+          <div class="kpi-value" id="kpiKaamReady">2</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         VIEW 1: HOME
+         ============================================================ -->
+    <div id="view-home" class="view-section active">
+
+      <button type="button" class="big-cta-btn" id="homeBigNayaOrderBtn">
+        <span>➕ Naya Order Banayein</span>
+      </button>
+
+      <!-- 2. NAYA ORDER FORM -->
+      <section class="section-block" id="nayaOrderSection">
+        <div class="section-header">
+          <h2 class="section-title">Naya Order Form</h2>
+        </div>
+        <div class="card">
+          <form id="nayaOrderForm" class="form-grid form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="custName">Customer Name *</label>
+              <input type="text" id="custName" class="form-control" placeholder="e.g. Ahmed Khan" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="custPhone">Phone Number *</label>
+              <input type="tel" id="custPhone" class="form-control" placeholder="e.g. 03001234567" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="orderItem">Kya Chapna Hai? *</label>
+              <select id="orderItem" class="form-select">
+                <option value="Shadi Card">Shadi Card</option>
+                <option value="Banner">Banner</option>
+                <option value="Visiting Card">Visiting Card</option>
+                <option value="Pamphlet">Pamphlet</option>
+                <option value="Bill Book">Bill Book</option>
+                <option value="Flex">Flex</option>
+                <option value="Sticker">Sticker</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="orderQtySelect">Quantity *</label>
+              <select id="orderQtySelect" class="form-select">
+                <option value="500">500</option>
+                <option value="1000" selected>1000</option>
+                <option value="2000">2000</option>
+                <option value="Custom">Custom</option>
+              </select>
+            </div>
+
+            <div class="form-group" id="customQtyGroup" style="display: none;">
+              <label class="form-label" for="customQtyInput">Custom Quantity / Sq Ft *</label>
+              <input type="number" id="customQtyInput" class="form-control" placeholder="e.g. 250 or 60 (sq ft)" min="1" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="paperType">Paper Type *</label>
+              <select id="paperType" class="form-select">
+                <option value="Art Card">Art Card</option>
+                <option value="Normal">Normal</option>
+                <option value="Glossy">Glossy</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="deliveryDate">Delivery Date *</label>
+              <input type="date" id="deliveryDate" class="form-control" required />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="advanceAmount">Advance Amount (Rs.) *</label>
+              <input type="number" id="advanceAmount" class="form-control" placeholder="e.g. 5000" min="0" value="0" required />
+            </div>
+
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <button type="submit" class="btn-orange" style="width: 100%;">
+                💾 Save Order
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- Active Orders Preview on Home -->
+      <section class="section-block">
+        <div class="section-header">
+          <h2 class="section-title">Active Orders & Status</h2>
+          <button type="button" class="filter-pill" onclick="switchTab('orders')">Sab Dekhein →</button>
+        </div>
+        <div id="homeOrdersContainer" class="orders-list"></div>
+      </section>
+
+      <!-- 4. PRICE CALCULATOR -->
+      <section class="section-block" id="calculatorSection">
+        <div class="section-header">
+          <h2 class="section-title">Price Calculator</h2>
+        </div>
+        <div class="card">
+          <div class="form-grid form-grid-2">
+            <div class="form-group">
+              <label class="form-label" for="calcItem">Select Item</label>
+              <select id="calcItem" class="form-select">
+                <option value="Shadi Card">Shadi Card</option>
+                <option value="Visiting Card">Visiting Card</option>
+                <option value="Banner">Banner</option>
+                <option value="Bill Book">Bill Book</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" id="calcQtyLabel" for="calcQty">Quantity (Cards / Books)</label>
+              <input type="number" id="calcQty" class="form-control" value="1000" min="1" />
+            </div>
+
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label class="form-label" for="calcPaper">Paper Type</label>
+              <select id="calcPaper" class="form-select">
+                <option value="Art Card">Art Card</option>
+                <option value="Normal">Normal</option>
+                <option value="Glossy">Glossy</option>
+              </select>
+            </div>
+
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <button type="button" id="calculatePriceBtn" class="btn-primary" style="width: 100%;">
+                🧮 Calculate Price
+              </button>
+            </div>
+          </div>
+
+          <div class="calc-result" id="calcResultBox">
+            <div>
+              <div style="font-size: 0.75rem; color: var(--text-muted); font-weight: 600;">Estimated Rate</div>
+              <div id="calcSummaryText" style="font-size: 0.9rem; font-weight: 600; color: var(--primary);">
+                1000 Shadi Card, Art Card
+              </div>
+            </div>
+            <div class="calc-price-tag" id="calcFinalPrice">Rs. 18,000</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. DESIGN GALLERY: 6 IMAGES -->
+      <section class="section-block" id="gallerySection">
+        <div class="section-header">
+          <h2 class="section-title">Hamara Best Kaam</h2>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&w=600&q=80" alt="Royal Shadi Card Design" loading="lazy" />
+            <div class="gallery-caption">Shadi Card — Gold Foil</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&w=600&q=80" alt="Wedding Invitation Card" loading="lazy" />
+            <div class="gallery-caption">Shadi Card — Art Card</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=600&q=80" alt="Outdoor Banner & Signage" loading="lazy" />
+            <div class="gallery-caption">Banner — High-Res Print</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80" alt="Promo Flex Display" loading="lazy" />
+            <div class="gallery-caption">Banner — Shop Display</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=600&q=80" alt="Visiting Card Matte Finish" loading="lazy" />
+            <div class="gallery-caption">Visiting Card — Matte</div>
+          </div>
+          <div class="gallery-card">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=80" alt="Corporate Business Cards" loading="lazy" />
+            <div class="gallery-caption">Visiting Card — Glossy</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. STAFF / KAAM WALA HISSA -->
+      <section class="section-block" id="staffSection">
+        <div class="section-header">
+          <h2 class="section-title">Staff / Kaam Wala Hissa</h2>
+        </div>
+        <div class="card">
+          <div id="staffListContainer"></div>
+
+          <form id="addStaffForm" class="form-grid form-grid-2" style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed #cbd5e1;">
+            <div class="form-group">
+              <label class="form-label" for="staffNameInput">Staff Name</label>
+              <input type="text" id="staffNameInput" class="form-control" placeholder="e.g. Bilal" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="staffTaskInput">Kaam Assigned</label>
+              <input type="text" id="staffTaskInput" class="form-control" placeholder="e.g. 1000 Card Designing" required />
+            </div>
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <button type="submit" class="btn-primary" style="width: 100%;">+ Staff Kaam Add Karein</button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <!-- 5. CUSTOMER LIST -->
+      <section class="section-block" id="customersSection">
+        <div class="section-header">
+          <h2 class="section-title">Customer List</h2>
+        </div>
+        <div id="customerListContainer"></div>
+      </section>
+
+    </div>
+
+    <!-- ============================================================
+         VIEW 2: NAYA ORDER TAB
+         ============================================================ -->
+    <div id="view-naya-order" class="view-section">
+      <div class="section-header">
+        <h2 class="section-title">Naya Order Darj Karein</h2>
+      </div>
+      <div id="nayaOrderTabMount"></div>
+    </div>
+
+    <!-- ============================================================
+         VIEW 3: ORDERS TAB
+         ============================================================ -->
+    <div id="view-orders" class="view-section">
+      <div class="section-header">
+        <h2 class="section-title">Tamam Orders</h2>
+      </div>
+
+      <div class="filter-scroll" id="statusFilterBar">
+        <button type="button" class="filter-pill active" data-filter="All">Sab Orders</button>
+        <button type="button" class="filter-pill" data-filter="Pending">Pending</button>
+        <button type="button" class="filter-pill" data-filter="Designing">Designing</button>
+        <button type="button" class="filter-pill" data-filter="Printing">Printing</button>
+        <button type="button" class="filter-pill" data-filter="Ready">Ready</button>
+        <button type="button" class="filter-pill" data-filter="Delivered">Delivered</button>
+      </div>
+
+      <div id="allOrdersContainer" class="orders-list"></div>
+    </div>
+
+    <!-- ============================================================
+         VIEW 4: PAISE TAB
+         ============================================================ -->
+    <div id="view-paise" class="view-section">
+      <div class="section-header">
+        <h2 class="section-title">Payment / Udhaar Hisab</h2>
+      </div>
+
+      <div class="card" style="margin-bottom: 14px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">Kul Baaki Udhaar</div>
+            <div id="totalUdhaarDisplay" style="font-size: 1.35rem; font-weight: 700; color: var(--danger);">Rs. 25,000</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.78rem; color: var(--text-muted); font-weight: 600;">Kul Wasool Shuda Advance / Paid</div>
+            <div id="totalCollectedDisplay" style="font-size: 1.1rem; font-weight: 700; color: var(--success);">Rs. 0</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="paiseOrdersContainer" class="orders-list"></div>
+    </div>
+
+  </main>
+
+  <!-- 12. FOOTER -->
+  <footer class="app-footer">
+    <div class="secure-banner">
+      🔒 100% Secure - Aapke Customers Ka Data Safe Hai
+    </div>
+    <div class="footer-details">
+      <div><strong>Press Name:</strong> [YAHAN PRESS KA NAAM LIKHNA]</div>
+      <div><strong>WhatsApp:</strong> [YAHAN NUMBER LIKHNA e.g. 923001234567]</div>
+      <div><strong>Address:</strong> [YAHAN ADDRESS LIKHNA] — Karachi, Pakistan</div>
+    </div>
+  </footer>
+
+  <!-- 11. FIXED BOTTOM NAVIGATION -->
+  <nav class="bottom-nav" aria-label="Bottom Navigation">
+    <button type="button" class="nav-btn active" data-tab="home" id="nav-home">
+      <span class="nav-icon">🏠</span>
+      <span>Home</span>
+    </button>
+    <button type="button" class="nav-btn" data-tab="naya-order" id="nav-naya-order">
+      <span class="nav-icon">➕</span>
+      <span>Naya Order</span>
+    </button>
+    <button type="button" class="nav-btn" data-tab="orders" id="nav-orders">
+      <span class="nav-icon">📦</span>
+      <span>Orders</span>
+    </button>
+    <button type="button" class="nav-btn" data-tab="paise" id="nav-paise">
+      <span class="nav-icon">💰</span>
+      <span>Paise</span>
+    </button>
+  </nav>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      const OWNER_WHATSAPP = "923001234567";
+      const STORAGE_KEYS = {
+        ORDERS: "press_app_orders_v3",
+        STAFF: "press_app_staff_v3"
+      };
+      const STAGES = ["Pending", "Designing", "Printing", "Ready", "Delivered"];
+
+      const DEFAULT_ORDERS = [
+        {
+          id: "ORD-101",
+          customerName: "Ahmed Khan",
+          phone: "03001234567",
+          item: "Shadi Card",
+          quantity: 500,
+          paperType: "Art Card",
+          deliveryDate: "2026-11-22",
+          totalBill: 20000,
+          advance: 10000,
+          status: "Designing",
+          isToday: true
+        },
+        {
+          id: "ORD-102",
+          customerName: "Usman Tariq",
+          phone: "03214567890",
+          item: "Visiting Card",
+          quantity: 1000,
+          paperType: "Glossy",
+          deliveryDate: "2026-11-20",
+          totalBill: 8000,
+          advance: 3000,
+          status: "Printing",
+          isToday: true
+        },
+        {
+          id: "ORD-103",
+          customerName: "Zainab Siddiqui",
+          phone: "03339876543",
+          item: "Banner",
+          quantity: 50,
+          paperType: "Normal",
+          deliveryDate: "2026-11-19",
+          totalBill: 10000,
+          advance: 5000,
+          status: "Ready",
+          isToday: true
+        },
+        {
+          id: "ORD-104",
+          customerName: "Kamran Raza",
+          phone: "03122233445",
+          item: "Bill Book",
+          quantity: 1000,
+          paperType: "Normal",
+          deliveryDate: "2026-11-21",
+          totalBill: 7000,
+          advance: 0,
+          status: "Ready",
+          isToday: true
+        },
+        {
+          id: "ORD-105",
+          customerName: "Hina Farooq",
+          phone: "03457788990",
+          item: "Pamphlet",
+          quantity: 2000,
+          paperType: "Art Card",
+          deliveryDate: "2026-11-23",
+          totalBill: 6000,
+          advance: 6000,
+          status: "Pending",
+          isToday: true
+        }
+      ];
+
+      const DEFAULT_STAFF = [
+        { id: "STF-1", name: "Bilal", task: "1000 Card Designing", status: "In Progress" },
+        { id: "STF-2", name: "Noman", task: "Banner Printing & Finishing", status: "In Progress" },
+        { id: "STF-3", name: "Kashif", task: "Shadi Card Cutting & Packing", status: "Done" }
+      ];
+
+      let orders = [];
+      let staffList = [];
+      let currentStatusFilter = "All";
+      let searchQuery = "";
+      let toastTimer = null;
+
+      function loadState() {
+        try {
+          const rawOrders = localStorage.getItem(STORAGE_KEYS.ORDERS);
+          const rawStaff = localStorage.getItem(STORAGE_KEYS.STAFF);
+          orders = rawOrders ? JSON.parse(rawOrders) : DEFAULT_ORDERS.slice();
+          staffList = rawStaff ? JSON.parse(rawStaff) : DEFAULT_STAFF.slice();
+        } catch (err) {
+          orders = DEFAULT_ORDERS.slice();
+          staffList = DEFAULT_STAFF.slice();
+        }
+      }
+
+      function saveState() {
+        try {
+          localStorage.setItem(STORAGE_KEYS.ORDERS, JSON.stringify(orders));
+          localStorage.setItem(STORAGE_KEYS.STAFF, JSON.stringify(staffList));
+        } catch (err) {
+          // Ignore storage quota errors safely
+        }
+      }
+
+      function formatRs(amount) {
+        const num = Math.max(0, Number(amount) || 0);
+        return "Rs. " + num.toLocaleString("en-US");
+      }
+
+      function escapeHTML(str) {
+        return String(str || "")
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;");
+      }
+
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add("show");
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () {
+          toast.classList.remove("show");
+        }, 2300);
+      }
+
+      function toWhatsAppPhone(phone) {
+        const digits = String(phone || "").replace(/\D/g, "");
+        if (digits.startsWith("92")) return digits;
+        if (digits.startsWith("0")) return "92" + digits.slice(1);
+        return digits || OWNER_WHATSAPP;
+      }
+
+      function computePrice(item, qty, paperType) {
+        const quantity = Math.max(1, Number(qty) || 1);
+        let baseTotal = 0;
+
+        if (item === "Visiting Card") {
+          baseTotal = (quantity / 1000) * 2500;
+        } else if (item === "Shadi Card") {
+          baseTotal = (quantity / 1000) * 18000;
+        } else if (item === "Banner" || item === "Flex") {
+          baseTotal = quantity * 120;
+        } else if (item === "Bill Book") {
+          baseTotal = (quantity / 1000) * 3500;
+        } else if (item === "Pamphlet") {
+          baseTotal = (quantity / 1000) * 4000;
+        } else if (item === "Sticker") {
+          baseTotal = (quantity / 1000) * 3000;
+        } else {
+          baseTotal = (quantity / 1000) * 3500;
+        }
+
+        let multiplier = 1;
+        if (item !== "Banner" && item !== "Flex") {
+          if (paperType === "Glossy") multiplier = 1.1;
+          if (paperType === "Normal") multiplier = 0.85;
+        }
+
+        return Math.round(baseTotal * multiplier);
+      }
+
+      function buildWhatsAppUrl(order) {
+        const waPhone = toWhatsAppPhone(order.phone);
+        let text = "";
+        if (order.status === "Ready") {
+          text = "Assalam-o-Alaikum! Aapka kaam READY hai, aa ke le sakte hain.";
+        } else if (order.status === "Delivered") {
+          text = "Assalam-o-Alaikum " + order.customerName + "! Aapka " + order.item + " order deliver ho chuka hai. Shukriya!";
+        } else {
+          text = "Assalam-o-Alaikum " + order.customerName + "! Aapke " + order.item + " (" + order.quantity + ") ka status abhi " + order.status + " hai.";
+        }
+        return "https://wa.me/" + waPhone + "?text=" + encodeURIComponent(text);
+      }
+
+      function renderDashboard() {
+        const nayeCount = orders.filter(function (o) { return o.isToday; }).length;
+        const chalRahaCount = orders.filter(function (o) {
+          return o.status === "Designing" || o.status === "Printing";
+        }).length;
+        const readyCount = orders.filter(function (o) { return o.status === "Ready"; }).length;
+
+        const totalBaaki = orders.reduce(function (sum, o) {
+          const baaki = Math.max(0, (Number(o.totalBill) || 0) - (Number(o.advance) || 0));
+          return sum + baaki;
+        }, 0);
+
+        document.getElementById("kpiNayeOrders").textContent = String(nayeCount);
+        document.getElementById("kpiKaamChalRaha").textContent = String(chalRahaCount);
+        document.getElementById("kpiPaymentAaniHai").textContent = formatRs(totalBaaki);
+        document.getElementById("kpiKaamReady").textContent = String(readyCount);
+      }
+
+      function createOrderCardHTML(order) {
+        const totalBill = Number(order.totalBill) || 0;
+        const advance = Number(order.advance) || 0;
+        const baaki = Math.max(0, totalBill - advance);
+        const isPaid = baaki === 0;
+
+        const stageButtonsHTML = STAGES.map(function (stage) {
+          const activeClass = order.status === stage ? "active" : "";
+          return '<button type="button" class="stage-btn ' + activeClass + '" data-stage="' + stage + '" onclick="updateOrderStatus(\'' + order.id + '\', \'' + stage + '\')">' + stage + "</button>";
+        }).join("");
+
+        const baakiBadge = isPaid
+          ? '<span class="paid-pill">Paid (Baaki: Rs. 0)</span>'
+          : '<span class="baaki-red">Baaki: ' + formatRs(baaki) + "</span>";
+
+        const paymentBtn = !isPaid
+          ? '<button type="button" class="btn-payment-mili" onclick="markPaymentReceived(\'' + order.id + '\')">✓ Payment Mili</button>'
+          : "";
+
+        return (
+          '<article class="order-card">' +
+            '<div class="order-top">' +
+              '<div>' +
+                '<div class="customer-name">' + escapeHTML(order.customerName) + "</div>" +
+                '<div class="customer-phone">📞 ' + escapeHTML(order.phone) + " • " + escapeHTML(order.id) + "</div>" +
+              "</div>" +
+              '<span class="status-badge status-' + escapeHTML(order.status) + '">' + escapeHTML(order.status) + "</span>" +
+            "</div>" +
+            '<div class="order-specs">' +
+              '<div class="spec-item"><strong>Item:</strong> ' + escapeHTML(order.item) + "</div>" +
+              '<div class="spec-item"><strong>Qty:</strong> ' + escapeHTML(String(order.quantity)) + "</div>" +
+              '<div class="spec-item"><strong>Paper:</strong> ' + escapeHTML(order.paperType) + "</div>" +
+              '<div class="spec-item"><strong>Delivery:</strong> ' + escapeHTML(order.deliveryDate || "N/A") + "</div>" +
+            "</div>" +
+            "<div>" +
+              '<div class="stage-label">Stage Badlein:</div>' +
+              '<div class="stage-buttons">' + stageButtonsHTML + "</div>" +
+            "</div>" +
+            '<div class="hisab-box">' +
+              '<div class="hisab-figures">' +
+                "<span><strong>Total Bill:</strong> " + formatRs(totalBill) + "</span>" +
+                "<span><strong>Advance:</strong> " + formatRs(advance) + "</span>" +
+                baakiBadge +
+              "</div>" +
+              paymentBtn +
+            "</div>" +
+            '<a href="' + buildWhatsAppUrl(order) + '" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">' +
+              "<span>💬 Customer Ko WhatsApp Karo</span>" +
+            "</a>" +
+          "</article>"
+        );
+      }
+
+      function getFilteredOrders() {
+        const q = searchQuery.trim().toLowerCase();
+        return orders.filter(function (o) {
+          const statusMatch = currentStatusFilter === "All" || o.status === currentStatusFilter;
+          const searchMatch =
+            !q ||
+            String(o.customerName || "").toLowerCase().includes(q) ||
+            String(o.phone || "").toLowerCase().includes(q) ||
+            String(o.item || "").toLowerCase().includes(q);
+          return statusMatch && searchMatch;
+        });
+      }
+
+      function renderOrders() {
+        const filtered = getFilteredOrders();
+        const homeContainer = document.getElementById("homeOrdersContainer");
+        const allContainer = document.getElementById("allOrdersContainer");
+
+        if (filtered.length === 0) {
+          const empty = '<div class="empty-state">Koi order nahi mila. Naya order add karein ya search clear karein.</div>';
+          homeContainer.innerHTML = empty;
+          allContainer.innerHTML = empty;
+          return;
+        }
+
+        const homeItems = searchQuery.trim() ? filtered : filtered.slice(0, 4);
+        homeContainer.innerHTML = homeItems.map(createOrderCardHTML).join("");
+        allContainer.innerHTML = filtered.map(createOrderCardHTML).join("");
+      }
+
+      function renderPaiseTab() {
+        const q = searchQuery.trim().toLowerCase();
+        const matching = orders.filter(function (o) {
+          return (
+            !q ||
+            String(o.customerName || "").toLowerCase().includes(q) ||
+            String(o.phone || "").toLowerCase().includes(q)
+          );
+        });
+
+        let totalUdhaar = 0;
+        let totalCollected = 0;
+
+        orders.forEach(function (o) {
+          const bill = Number(o.totalBill) || 0;
+          const adv = Number(o.advance) || 0;
+          totalUdhaar += Math.max(0, bill - adv);
+          totalCollected += adv;
+        });
+
+        document.getElementById("totalUdhaarDisplay").textContent = formatRs(totalUdhaar);
+        document.getElementById("totalCollectedDisplay").textContent = formatRs(totalCollected);
+
+        const container = document.getElementById("paiseOrdersContainer");
+        if (matching.length === 0) {
+          container.innerHTML = '<div class="empty-state">Koi payment record nahi mila.</div>';
+          return;
+        }
+        container.innerHTML = matching.map(createOrderCardHTML).join("");
+      }
+
+      function renderCustomers() {
+        const q = searchQuery.trim().toLowerCase();
+        const customerMap = new Map();
+
+        orders.forEach(function (o) {
+          const key = String(o.customerName || "").trim().toLowerCase() + "|" + String(o.phone || "").trim();
+          customerMap.set(key, {
+            name: o.customerName,
+            phone: o.phone,
+            lastOrder: o.quantity + " " + o.item
+          });
+        });
+
+        const list = Array.from(customerMap.values()).filter(function (c) {
+          return (
+            !q ||
+            String(c.name || "").toLowerCase().includes(q) ||
+            String(c.phone || "").toLowerCase().includes(q) ||
+            String(c.lastOrder || "").toLowerCase().includes(q)
+          );
+        });
+
+        const container = document.getElementById("customerListContainer");
+        if (list.length === 0) {
+          container.innerHTML = '<div class="empty-state">Koi customer nahi mila.</div>';
+          return;
+        }
+
+        container.innerHTML = list
+          .map(function (c) {
+            return (
+              '<div class="customer-item">' +
+                "<div>" +
+                  '<div class="customer-main">' + escapeHTML(c.name) + " - " + escapeHTML(c.phone) + "</div>" +
+                  '<div class="customer-sub">Last: ' + escapeHTML(c.lastOrder) + "</div>" +
+                "</div>" +
+                '<a href="https://wa.me/' + toWhatsAppPhone(c.phone) + '" target="_blank" rel="noopener noreferrer" class="filter-pill" style="text-decoration:none;">WhatsApp</a>' +
+              "</div>"
+            );
+          })
+          .join("");
+      }
+
+      function renderStaff() {
+        const container = document.getElementById("staffListContainer");
+        if (staffList.length === 0) {
+          container.innerHTML = '<div class="empty-state">Abhi koi staff kaam darj nahi hai.</div>';
+          return;
+        }
+
+        container.innerHTML = staffList
+          .map(function (st) {
+            const isDone = st.status === "Done";
+            const badgeClass = isDone ? "staff-done" : "staff-progress";
+            return (
+              '<div class="staff-item">' +
+                '<div><div class="customer-main">' + escapeHTML(st.name) + " - " + escapeHTML(st.task) + "</div></div>" +
+                '<button type="button" class="staff-badge ' + badgeClass + '" onclick="toggleStaffStatus(\'' + st.id + '\')">' + escapeHTML(st.status) + "</button>" +
+              "</div>"
+            );
+          })
+          .join("");
+      }
+
+      window.updateOrderStatus = function (orderId, nextStage) {
+        const found = orders.find(function (o) { return o.id === orderId; });
+        if (!found) return;
+        found.status = nextStage;
+        saveState();
+        renderAll();
+        showToast("Status: " + nextStage);
+      };
+
+      window.markPaymentReceived = function (orderId) {
+        const found = orders.find(function (o) { return o.id === orderId; });
+        if (!found) return;
+        found.advance = Number(found.totalBill) || 0;
+        saveState();
+        renderAll();
+        showToast("Payment Mili — Baaki Rs. 0 (Paid)");
+      };
+
+      window.toggleStaffStatus = function (staffId) {
+        const found = staffList.find(function (s) { return s.id === staffId; });
+        if (!found) return;
+        found.status = found.status === "In Progress" ? "Done" : "In Progress";
+        saveState();
+        renderStaff();
+        showToast(found.name + ": " + found.status);
+      };
+
+      window.switchTab = function (tabName) {
+        document.querySelectorAll(".view-section").forEach(function (sec) {
+          sec.classList.remove("active");
+        });
+
+        const targetSec = document.getElementById("view-" + tabName);
+        if (targetSec) targetSec.classList.add("active");
+
+        document.querySelectorAll(".nav-btn").forEach(function (btn) {
+          btn.classList.toggle("active", btn.dataset.tab === tabName);
+        });
+
+        const nayaSection = document.getElementById("nayaOrderSection");
+        const nayaTabMount = document.getElementById("nayaOrderTabMount");
+        const homeView = document.getElementById("view-home");
+
+        if (tabName === "naya-order") {
+          nayaTabMount.appendChild(nayaSection);
+        } else if (!homeView.contains(nayaSection)) {
+          const bigCta = document.getElementById("homeBigNayaOrderBtn");
+          bigCta.insertAdjacentElement("afterend", nayaSection);
+        }
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+
+      function renderAll() {
+        renderDashboard();
+        renderOrders();
+        renderCustomers();
+        renderStaff();
+        renderPaiseTab();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        loadState();
+
+        const defaultDelivery = new Date();
+        defaultDelivery.setDate(defaultDelivery.getDate() + 3);
+        const dateInput = document.getElementById("deliveryDate");
+        if (dateInput) dateInput.valueAsDate = defaultDelivery;
+
+        document.querySelectorAll(".nav-btn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            window.switchTab(btn.dataset.tab);
+          });
+        });
+
+        document.getElementById("headerNayaOrderBtn").addEventListener("click", function () {
+          window.switchTab("naya-order");
+          setTimeout(function () {
+            const el = document.getElementById("custName");
+            if (el) el.focus();
+          }, 150);
+        });
+
+        document.getElementById("homeBigNayaOrderBtn").addEventListener("click", function () {
+          const sec = document.getElementById("nayaOrderSection");
+          if (sec) sec.scrollIntoView({ behavior: "smooth" });
+          setTimeout(function () {
+            const el = document.getElementById("custName");
+            if (el) el.focus();
+          }, 250);
+        });
+
+        const qtySelect = document.getElementById("orderQtySelect");
+        const customQtyGroup = document.getElementById("customQtyGroup");
+        qtySelect.addEventListener("change", function () {
+          customQtyGroup.style.display = qtySelect.value === "Custom" ? "flex" : "none";
+        });
+
+        document.getElementById("nayaOrderForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const customerName = document.getElementById("custName").value.trim();
+          const phone = document.getElementById("custPhone").value.trim();
+          const item = document.getElementById("orderItem").value;
+          const qtyChoice = qtySelect.value;
+          const customQty = Number(document.getElementById("customQtyInput").value);
+          const quantity = qtyChoice === "Custom" ? Math.max(1, customQty || 100) : Number(qtyChoice);
+          const paperType = document.getElementById("paperType").value;
+          const deliveryDate = document.getElementById("deliveryDate").value;
+          const advance = Math.max(0, Number(document.getElementById("advanceAmount").value) || 0);
+
+          const calculatedTotal = computePrice(item, quantity, paperType);
+          const totalBill = Math.max(calculatedTotal, advance);
+
+          orders.unshift({
+            id: "ORD-" + Math.floor(106 + Math.random() * 894),
+            customerName: customerName,
+            phone: phone,
+            item: item,
+            quantity: quantity,
+            paperType: paperType,
+            deliveryDate: deliveryDate,
+            totalBill: totalBill,
+            advance: advance,
+            status: "Pending",
+            isToday: true
+          });
+
+          saveState();
+          renderAll();
+
+          e.target.reset();
+          customQtyGroup.style.display = "none";
+          if (dateInput) dateInput.valueAsDate = defaultDelivery;
+          document.getElementById("advanceAmount").value = "0";
+
+          showToast("Naya Order Save Ho Gaya!");
+          window.switchTab("orders");
+        });
+
+        const calcItem = document.getElementById("calcItem");
+        const calcQty = document.getElementById("calcQty");
+        const calcPaper = document.getElementById("calcPaper");
+        const calcQtyLabel = document.getElementById("calcQtyLabel");
+
+        function updateCalcUI() {
+          const item = calcItem.value;
+          if (item === "Banner") {
+            calcQtyLabel.textContent = "Square Feet (sq ft)";
+            if (Number(calcQty.value) === 1000) calcQty.value = "50";
+          } else {
+            calcQtyLabel.textContent = "Quantity";
+            if (Number(calcQty.value) === 50) calcQty.value = "1000";
+          }
+
+          const qtyVal = Math.max(1, Number(calcQty.value) || 1);
+          const total = computePrice(item, qtyVal, calcPaper.value);
+          const unitStr = item === "Banner" ? qtyVal + " sq ft" : String(qtyVal);
+
+          document.getElementById("calcSummaryText").textContent = unitStr + " " + item + ", " + calcPaper.value;
+          document.getElementById("calcFinalPrice").textContent = formatRs(total);
+        }
+
+        calcItem.addEventListener("change", updateCalcUI);
+        document.getElementById("calculatePriceBtn").addEventListener("click", updateCalcUI);
+        updateCalcUI();
+
+        document.querySelectorAll("#statusFilterBar .filter-pill").forEach(function (pill) {
+          pill.addEventListener("click", function () {
+            document.querySelectorAll("#statusFilterBar .filter-pill").forEach(function (p) {
+              p.classList.remove("active");
+            });
+            pill.classList.add("active");
+            currentStatusFilter = pill.dataset.filter;
+            renderOrders();
+          });
+        });
+
+        document.getElementById("addStaffForm").addEventListener("submit", function (e) {
+          e.preventDefault();
+          const nameEl = document.getElementById("staffNameInput");
+          const taskEl = document.getElementById("staffTaskInput");
+
+          staffList.push({
+            id: "STF-" + Date.now(),
+            name: nameEl.value.trim(),
+            task: taskEl.value.trim(),
+            status: "In Progress"
+          });
+
+          saveState();
+          renderStaff();
+          nameEl.value = "";
+          taskEl.value = "";
+          showToast("Staff kaam add ho gaya!");
+        });
+
+        const searchInput = document.getElementById("globalSearchInput");
+        const clearSearchBtn = document.getElementById("clearSearchBtn");
+
+        searchInput.addEventListener("input", function () {
+          searchQuery = searchInput.value;
+          clearSearchBtn.classList.toggle("visible", searchQuery.length > 0);
+          renderOrders();
+          renderCustomers();
+          renderPaiseTab();
+        });
+
+        clearSearchBtn.addEventListener("click", function () {
+          searchInput.value = "";
+          searchQuery = "";
+          clearSearchBtn.classList.remove("visible");
+          renderOrders();
+          renderCustomers();
+          renderPaiseTab();
+        });
+
+        renderAll();
+      });
+    })();
+  </script>
+</body>
+</html>
